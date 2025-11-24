@@ -32,7 +32,7 @@ public class EscolaService {
         if (escolaRepository.existsByNome(dto.nome())) {
             throw new BadRequestException("Já existe uma escola com o nome " + dto.nome());
         }
-        Escola escola = new Escola(dto.nome());
+        Escola escola = new Escola(dto.nome(), dto.ativo());
         escolaRepository.save(escola);
         return toDto(escola);
     }
@@ -63,10 +63,10 @@ public class EscolaService {
         return toDto(escolaRepository.save(escola));
     }
 
-    public void deactivateEscola(Long id) {
+    public void changeStatusEscola(Long id) {
         Escola escola = escolaRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Escola não encontrada com id " + id));
-        escola.setAtivo(false);
+        escola.setAtivo(!escola.getAtivo());
         escolaRepository.save(escola);
     }
 

@@ -31,13 +31,13 @@ public class Disciplina {
     public Disciplina() {
     }
 
-    public Disciplina(String sigla, String descricao, Integer cargaHoraria, Curso curso, String matriz) {
+    public Disciplina(String sigla, String descricao, Integer cargaHoraria, Curso curso, String matriz, Boolean ativo) {
         this.sigla = sigla;
         this.descricao = descricao;
         this.cargaHoraria = cargaHoraria;
         this.curso = curso;
         this.matriz = matriz;
-        this.ativo = true;
+        this.ativo = ativo;
     }
 
     public Long getId() {

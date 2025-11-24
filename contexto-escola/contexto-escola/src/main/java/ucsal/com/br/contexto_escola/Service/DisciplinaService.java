@@ -33,7 +33,7 @@ public class DisciplinaService {
         }
         Curso curso = cursoRepository.findById(dto.cursoId())
                 .orElseThrow(() -> new ResourceNotFoundException("Curso não encontrado com id " + dto.cursoId()));
-        Disciplina disciplina = new Disciplina(dto.sigla(), dto.descricao(), dto.cargaHoraria(), curso, dto.matriz());
+        Disciplina disciplina = new Disciplina(dto.sigla(), dto.descricao(), dto.cargaHoraria(), curso, dto.matriz(), dto.ativo());
         disciplinaRepository.save(disciplina);
         return toDto(disciplina);
     }

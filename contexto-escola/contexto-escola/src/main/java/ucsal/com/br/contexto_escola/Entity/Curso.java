@@ -23,10 +23,10 @@ public class Curso {
     public Curso() {
     }
 
-    public Curso(String nome, Escola escola) {
+    public Curso(String nome, Escola escola, Boolean ativo) {
         this.nome = nome;
         this.escola = escola;
-        this.ativo = true;
+        this.ativo = ativo;
     }
 
     public Long getId() {
@@ -41,6 +41,7 @@ public class Curso {
         return nome;
     }
 
+    public Boolean getAtivo(){ return ativo; }
     public void setNome(String nome) {
         this.nome = nome;
     }

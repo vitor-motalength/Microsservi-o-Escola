@@ -33,7 +33,7 @@ public class CursoService {
         }
         Escola escola = escolaRepository.findById(dto.escolaId())
                 .orElseThrow(() -> new ResourceNotFoundException("Escola não encontrada com id " + dto.escolaId()));
-        Curso curso = new Curso(dto.nome(), escola);
+        Curso curso = new Curso(dto.nome(), escola, dto.ativo());
         cursoRepository.save(curso);
         return toDto(curso);
     }
@@ -68,10 +68,10 @@ public class CursoService {
         return toDto(cursoRepository.save(curso));
     }
 
-    public void deactivateCurso(Long id) {
+    public void changeStatusCurso(Long id) {
         Curso curso = cursoRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Curso não encontrado com id " + id));
-        curso.setAtivo(false);
+        curso.setAtivo(!curso.getAtivo());
         cursoRepository.save(curso);
     }
 

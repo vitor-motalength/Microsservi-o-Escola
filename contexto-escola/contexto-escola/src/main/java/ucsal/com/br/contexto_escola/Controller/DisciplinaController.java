@@ -18,7 +18,6 @@ public class DisciplinaController {
         this.disciplinaService = disciplinaService;
     }
 
-
     @PostMapping
     public ResponseEntity<DisciplinaDTO> create(@Validated @RequestBody DisciplinaDTO dto) {
         DisciplinaDTO created = disciplinaService.createDisciplina(dto);
@@ -44,7 +43,7 @@ public class DisciplinaController {
     }
 
     //  @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @PatchMapping("/{id}/deactivate")
+    @PatchMapping("/{id}/change-status")
     public ResponseEntity<Void> deactivate(@PathVariable Long id) {
         DisciplinaDTO disc = disciplinaService.getDisciplina(id);
         DisciplinaDTO updatedDisc = new DisciplinaDTO(
@@ -54,7 +53,7 @@ public class DisciplinaController {
                 disc.cargaHoraria(),
                 disc.cursoId(),
                 disc.matriz(),
-                false
+                !disc.ativo()
         );
         disciplinaService.updateDisciplina(id, updatedDisc);
         return ResponseEntity.noContent().build();

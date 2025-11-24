@@ -44,9 +44,9 @@ public class CursoController {
     }
 
 
-    @PatchMapping("/{id}/deactivate")
+    @PatchMapping("/{id}/change-status")
     public ResponseEntity<Void> deactivate(@PathVariable Long id) {
-        cursoService.deactivateCurso(id);
+        cursoService.changeStatusCurso(id);
         return ResponseEntity.noContent().build();
     }
 }

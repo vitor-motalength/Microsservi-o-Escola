@@ -6,4 +6,5 @@ public record DisciplinaDTO(Long id,
                             Integer cargaHoraria,
                             Long cursoId,
                             String matriz,
-                            boolean ativo) {}
+                            boolean ativo
+) {}

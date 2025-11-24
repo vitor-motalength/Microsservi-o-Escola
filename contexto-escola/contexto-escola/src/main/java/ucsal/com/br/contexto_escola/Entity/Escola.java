@@ -20,9 +20,9 @@ public class Escola {
     public Escola() {
     }
 
-    public Escola(String nome) {
+    public Escola(String nome, Boolean ativo) {
         this.nome = nome;
-        this.ativo = true;
+        this.ativo = ativo;
     }
 
     public Long getId() {
@@ -40,7 +40,7 @@ public class Escola {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
+    public Boolean getAtivo() { return this.ativo; }
     public boolean isAtivo() {
         return ativo;
     }

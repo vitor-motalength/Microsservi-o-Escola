@@ -45,9 +45,9 @@ public class EscolaController {
     }
 
     //   @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @PatchMapping("/{id}/deactivate")
+    @PatchMapping("/{id}/change-status")
     public ResponseEntity<Void> deactivate(@PathVariable Long id) {
-        escolaService.deactivateEscola(id);
+        escolaService.changeStatusEscola(id);
         return ResponseEntity.noContent().build();
     }
 }
